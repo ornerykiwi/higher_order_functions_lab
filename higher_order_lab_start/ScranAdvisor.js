@@ -22,7 +22,7 @@ ScranAdvisor.prototype.allRestaurantsInTown = function(townName){
 ScranAdvisor.prototype.mostCommonCuisine = function(){
     const cuisineCount = this.restaurants.reduce((agg, restaurant) => {
         restaurant.cuisines.forEach(cuisine => {
-            agg[cuisine] = (agg[cuisine] || 0) +1
+            agg[cuisine] = (agg[cuisine] || 0) +1 //falsy value, counts unique restaurants
         });
         return agg; 
     }, {});
@@ -34,16 +34,16 @@ ScranAdvisor.prototype.mostCommonCuisine = function(){
         return mostCommon;
     }, { cuisine: null, count: 0 }).cuisine;
 }
+//found this using mdn and claude for extra help
 
 ScranAdvisor.prototype.searchBySubstring = function(subString) {
-    // Convert substring to lowercase for case-insensitive search
+    //convert substring to lowercase for case-insensitive search
     const lowerCaseSubString = subString.toLowerCase();
 
-    // Filter restaurants that contain the substring in their name
+    //filter restaurants that contain the substring in name
     return this.restaurants.filter(restaurant =>
         restaurant.name.toLowerCase().includes(lowerCaseSubString)
     );
 };
-
 
 module.exports = ScranAdvisor;
