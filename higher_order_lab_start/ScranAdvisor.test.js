@@ -124,14 +124,33 @@ describe('ScranAdvisor', () => {
 
     // Extensions
 
-    test.skip('can find the most common cuisine type', () => {
+    test('can find the most common cuisine type', () => {
       const expected = 'JAPANESE';
       const actual = scranAdvisor.mostCommonCuisine();
       expect(actual).toEqual(expected);
 
     })
 
-    test.skip('can find restaurant with substring', () => {
+    test('can find restaurant with substring', () => {
+      const expected = [{
+        "id": 24,
+        "name": "The Gordon Highlander",
+        "address": "W High Street",
+        "postcode": "AB51 3QQ",
+        "website": "https://www.jdwetherspoon.com/pubs/all-pubs/scotland/aberdeen/the-gordon-highlander-inverurie",
+        "cuisines": [
+            "BRITISH"
+        ],
+        "location": {
+            "id": 4,
+            "town": "Inverurie",
+            "neighbourhood": "Town Centre"
+        },
+        "latitude": 57.284996342160724,
+        "longitude": -2.3796990138752268
+    }];
+      const actual = scranAdvisor.searchBySubstring('gordon');
+      expect(actual).toEqual(expected); 
 
     })
 
