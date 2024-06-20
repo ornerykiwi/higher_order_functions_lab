@@ -22,7 +22,7 @@ ScranAdvisor.prototype.allRestaurantsInTown = function(townName){
 ScranAdvisor.prototype.mostCommonCuisine = function(){
     const cuisineCount = this.restaurants.reduce((agg, restaurant) => {
         restaurant.cuisines.forEach(cuisine => {
-            agg[cuisine] = (agg[cuisine] || 0) +1 //falsy value, counts unique restaurants
+            agg[cuisine] = (agg[cuisine] || 0) +1 //falsy value, counts unique cusines
         });
         return agg; 
     }, {});
